@@ -1,3 +1,4 @@
+
 // const alchemyKey =
 //   "wss://eth-goerli.g.alchemy.com/v2/UA3nKbX-hyplDc1epDrXrmD54L2e_1AR";
 // const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
@@ -135,6 +136,17 @@ export const getCurrentWalletConnected = async () => {
       address: "",
     };
   }
+};
+
+export const TextInput = ({ value, onChange }) => {
+  return (
+    <input
+      className="text-input"
+      type="text"
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+    />
+  );
 };
 
 // export const updateMessage = async (address, message) => {

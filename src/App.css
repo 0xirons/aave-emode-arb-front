@@ -9,8 +9,8 @@
   padding-left: 10px;
   padding-right: 10px;
   font-family: Inter, Arial;
-  font-size: 1.875rem;
-  font-weight: 700;
+  font-size: 2.375rem;
+  font-weight: 400;
   line-height: 46px;
   display: flex;
 }
@@ -20,38 +20,67 @@
   width: 100%;
   background-color: #fff;
   flex-direction: row;
-  flex-basis: 9%;
+  flex-basis: 11%;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 50px;
-  padding-bottom: 3px;
-  padding-left: 23px;
-  padding-right: 20px;
-  font-weight: 400;
-  line-height: 36px;
+  padding: 3px 20px 2px 23px;
+  font-size: 3rem;
+  line-height: 58px;
   display: flex;
 }
 
 .surge-finance {
-  margin-top: 6px;
-  font-size: 3rem;
-  line-height: 58px;
+  margin-bottom: 5px;
 }
 
 .panel {
-  color: #000;
-  height: 60%;
+  height: 70%;
   background-color: #fff;
   flex-direction: row;
-  flex-basis: 30%;
+  flex-basis: 33%;
   justify-content: space-around;
   align-items: center;
-  margin-top: 1px;
+  margin-bottom: 2px;
+  padding-bottom: 1px;
   display: flex;
 }
 
-.connect-wallet {
+.frame-6 {
+  color: #000;
+  height: 75%;
+  background-color: #cecece;
+  border: none;
+  border-radius: 10px;
+  flex-direction: row;
+  flex-basis: 44%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1px;
+  font-family: Inter, Arial;
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 36px;
+  display: flex;
+}
+
+.frame-7 {
+  color: #000;
+  height: 75%;
+  background-color: #cecece;
+  border: none;
+  border-radius: 10px;
+  flex-direction: row;
+  flex-basis: 44%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1px;
   margin-left: 15px;
+  font-family: Inter, Arial;
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 36px;
+  display: flex;
 }
 
 .select-frame {
@@ -62,7 +91,7 @@
   justify-content: center;
   align-items: stretch;
   margin-bottom: 50px;
-  font-size: 2.375rem;
+  font-weight: 700;
   display: flex;
 }
 
@@ -98,9 +127,29 @@
   flex-basis: 39%;
 }
 
-.deposit-button-instance {
+/* .deposit-button-instance {
   height: 100%;
   flex-basis: 46%;
+} */
+
+.deposit-button-instance {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+label {
+  margin-bottom: 8px;
+}
+
+input {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .deposit-frame-2 {
@@ -198,7 +247,6 @@
 }
 
 .select-leverage-frame {
-  color: #ddeef8;
   text-align: center;
   width: 100%;
   background-color: #fff;
@@ -207,17 +255,16 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 50px;
-  font-size: 1rem;
+  font-weight: 700;
   display: flex;
 }
 
 .select-leverage {
-  color: #000;
   margin-top: 4px;
-  font-size: 2.375rem;
 }
 
 .flex-container {
+  color: #ddeef8;
   height: 50%;
   flex-direction: column;
   justify-content: space-between;
@@ -225,6 +272,7 @@
   margin-left: 53px;
   padding-right: 1px;
   font-family: SF Compact Text, Arial;
+  font-size: 1rem;
   font-weight: 600;
   line-height: 19px;
   display: flex;
@@ -263,7 +311,6 @@
   align-items: flex-end;
   padding-right: 80px;
   font-size: 1.25rem;
-  font-weight: 400;
   line-height: 24px;
   display: flex;
 }

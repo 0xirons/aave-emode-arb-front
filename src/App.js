@@ -7,11 +7,23 @@ import REthFrame from "./components/REthFrame";
 import StEthFrame from "./components/StEthFrame";
 
 import { useEffect, useState } from "react";
-import { connectWallet, getCurrentWalletConnected } from "./util/interact.js";
+import {
+  connectWallet,
+  getCurrentWalletConnected,
+  depositStEthShort,
+  TextInput,
+} from "./util/interact.js";
 
 const App = () => {
   //state variables
   const [walletAddress, setWallet] = useState("");
+  const [amoutSthEthShort, setAmoutSthEthShort] = useState("");
+
+  const [value, setValue] = useState("");
+
+  const handleChange = (newValue) => {
+    setValue(newValue);
+  };
 
   function addWalletListener() {
     if (window.ethereum) {
@@ -68,9 +80,9 @@ const App = () => {
       <div className="header">
         <span className="surge-finance">Surge Finance</span>
         <div className="panel">
-          <span>Select Network</span>
+          <button className="frame-6">Select Network</button>
 
-          <button className="connect-wallet" onClick={connectWalletPressed}>
+          <button className="frame-7" onClick={connectWalletPressed}>
             {walletAddress.length > 0 ? (
               "Connected: " +
               String(walletAddress).substring(0, 6) +
@@ -82,18 +94,25 @@ const App = () => {
           </button>
         </div>
       </div>
+
       <div className="select-frame">
         <div className="select-short-frame">
           <span className="select-short-asset">Select Short Asset</span>
+
           <div className="deposit-frame-1">
             <StEthFrame
               className="st-eth-frame-instance"
               {...propsData.stEthFrame}
             />
-            <DepositButton
-              className="deposit-button-instance"
-              {...propsData.depositButton}
-            />
+
+            <div className="deposit-button-instance">
+              <label>Enter some text:</label>
+              <TextInput value={value} onChange={handleChange} />
+            </div>
+
+            {/* <DepositButton className="deposit-button-instance" {
+              ...
+            }/> */}
           </div>
           <div className="deposit-frame-2">
             <REthFrame
