@@ -106,7 +106,7 @@ const App = () => {
             />
 
             <div className="deposit-button-instance">
-              <label>Enter some text:</label>
+              <label>Deposit:</label>
               <TextInput value={value} onChange={handleChange} />
             </div>
 
