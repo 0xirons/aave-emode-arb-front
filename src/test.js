@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useEffect, useState } from "react";
+import { connectWallet, getCurrentWalletConnected } from "./util/interact.js";
 import "./App.css";
 import rEth from "./assets/rEth.png";
 import slider from "./assets/slider.svg";
@@ -6,12 +8,16 @@ import DepositButton from "./components/DepositButton";
 import REthFrame from "./components/REthFrame";
 import StEthFrame from "./components/StEthFrame";
 
-import { useEffect, useState } from "react";
-import { connectWallet, getCurrentWalletConnected } from "./util/interact.js";
-
 const App = () => {
   //state variables
   const [walletAddress, setWallet] = useState("");
+
+  //called only once
+  useEffect(async () => {
+    const { address } = await getCurrentWalletConnected();
+    setWallet(address);
+    addWalletListener();
+  }, []);
 
   function addWalletListener() {
     if (window.ethereum) {
@@ -24,15 +30,6 @@ const App = () => {
       });
     }
   }
-
-  useEffect(() => {
-    async function fetchData() {
-      const { address } = await getCurrentWalletConnected();
-      setWallet(address);
-      addWalletListener();
-    }
-    fetchData();
-  }, []); // Or [] if effect doesn't need props or state
 
   const connectWalletPressed = async () => {
     const walletResponse = await connectWallet();
@@ -69,8 +66,16 @@ const App = () => {
         <span className="surge-finance">Surge Finance</span>
         <div className="panel">
           <span>Select Network</span>
+          <span className="connect-wallet">Connect Wallet</span>
+        </div>
+      </div>
 
-          <button className="connect-wallet" onClick={connectWalletPressed}>
+      <div className="header">
+        <span className="surge-finance">Surge Finance</span>
+        <div className="panel">
+          <span>Select Network</span>
+
+          <button id="connect-wallet" onClick={connectWalletPressed}>
             {walletAddress.length > 0 ? (
               "Connected: " +
               String(walletAddress).substring(0, 6) +
@@ -82,6 +87,7 @@ const App = () => {
           </button>
         </div>
       </div>
+
       <div className="select-frame">
         <div className="select-short-frame">
           <span className="select-short-asset">Select Short Asset</span>
@@ -165,3 +171,4 @@ const App = () => {
   );
 };
 export default App;
+
