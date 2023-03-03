@@ -1,11 +1,44 @@
 import * as React from "react";
 import "./App.css";
-import slider from "./assets/slider.svg";
 import rEth from "./assets/rEth.png";
+import slider from "./assets/slider.svg";
+import DepositButton from "./components/DepositButton";
 import REthFrame from "./components/REthFrame";
 import StEthFrame from "./components/StEthFrame";
-import DepositButton from "./components/DepositButton";
+
+import { useEffect, useState } from "react";
+import { connectWallet, getCurrentWalletConnected } from "./util/interact.js";
+
 const App = () => {
+  //state variables
+  const [walletAddress, setWallet] = useState("");
+
+  function addWalletListener() {
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", (accounts) => {
+        if (accounts.length > 0) {
+          setWallet(accounts[0]);
+        } else {
+          setWallet("");
+        }
+      });
+    }
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      const { address } = await getCurrentWalletConnected();
+      setWallet(address);
+      addWalletListener();
+    }
+    fetchData();
+  }, []); // Or [] if effect doesn't need props or state
+
+  const connectWalletPressed = async () => {
+    const walletResponse = await connectWallet();
+    setWallet(walletResponse.address);
+  };
+
   const propsData = {
     stEthFrame: {
       stEth: "stETH",
@@ -29,13 +62,24 @@ const App = () => {
       eth: "Deposit: ...",
     },
   };
+
   return (
     <div className="frame-3">
       <div className="header">
         <span className="surge-finance">Surge Finance</span>
         <div className="panel">
-          <div className="select-network">Select Network</div>
-          <div className="connect-button">Connect Wallet</div>
+          <span>Select Network</span>
+
+          <button id="connect-wallet" onClick={connectWalletPressed}>
+            {walletAddress.length > 0 ? (
+              "Connected: " +
+              String(walletAddress).substring(0, 6) +
+              "..." +
+              String(walletAddress).substring(38)
+            ) : (
+              <span>Connect Wallet</span>
+            )}
+          </button>
         </div>
       </div>
       <div className="select-frame">
