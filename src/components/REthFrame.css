@@ -1,0 +1,23 @@
+.r-eth-frame-1 {
+  color: #000;
+  background-color: #e2e2e2;
+  border-radius: 15px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding-right: 3px;
+  font-family: Inter, Arial;
+  font-size: 2.375rem;
+  font-weight: 700;
+  line-height: 46px;
+  display: flex;
+}
+
+.r-eth-1-1 {
+  width: 45px;
+  height: 43px;
+  object-fit: cover;
+  background-position: center;
+  background-size: cover;
+  margin-left: 1px;
+}
